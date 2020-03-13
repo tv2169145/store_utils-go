@@ -18,23 +18,18 @@ func TestNewInternalServerError(t *testing.T) {
 }
 
 func TestNewBadRequestError(t *testing.T) {
-	err := NewBadRequestError("this is the message", errors.New("bad request error"))
+	err := NewBadRequestError("this is the message")
 	assert.NotNil(t, err)
 	assert.EqualValues(t, "this is the message", err.Message)
 	assert.EqualValues(t, http.StatusBadRequest, err.Status)
-	assert.NotNil(t, err.Causes)
-	assert.EqualValues(t, 1, len(err.Causes))
-	assert.EqualValues(t, "bad request error", err.Causes[0])
 }
 
 func TestNewNotFoundError(t *testing.T) {
-	err := NewNotFoundError("this is the message", errors.New("not found error"))
+	err := NewNotFoundError("this is the message")
 	assert.NotNil(t, err)
 	assert.EqualValues(t, "this is the message", err.Message)
 	assert.EqualValues(t, http.StatusNotFound, err.Status)
-	assert.NotNil(t, err.Causes)
-	assert.EqualValues(t, 1, len(err.Causes))
-	assert.EqualValues(t, "not found error", err.Causes[0])
+
 }
 
 func TestNewError(t *testing.T) {

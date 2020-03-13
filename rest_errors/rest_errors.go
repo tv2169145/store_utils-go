@@ -16,26 +16,20 @@ func NewError(msg string) error {
 	return errors.New(msg)
 }
 
-func NewBadRequestError(message string, err error) *RestErr  {
+func NewBadRequestError(message string) *RestErr  {
 	result := &RestErr{
 		Message: message,
 		Status: http.StatusBadRequest,
 		Error: "bad request",
 	}
-	if err != nil {
-		result.Causes = append(result.Causes, err.Error())
-	}
 	return result
 }
 
-func NewNotFoundError(message string, err error) *RestErr {
+func NewNotFoundError(message string) *RestErr {
 	result := &RestErr{
 		Message: message,
 		Status: http.StatusNotFound,
 		Error: "not found",
-	}
-	if err != nil {
-		result.Causes = append(result.Causes, err.Error())
 	}
 	return result
 }
