@@ -13,8 +13,8 @@ func TestNewInternalServerError(t *testing.T) {
 	assert.EqualValues(t, "this is the message", err.Message)
 	assert.EqualValues(t, http.StatusInternalServerError, err.Status)
 	assert.NotNil(t, err.Causes)
-	assert.EqualValues(t, 1, len(err.Causes))
-	assert.EqualValues(t, "database error", err.Causes[0])
+	assert.EqualValues(t, 1, len(err.Causes()))
+	assert.EqualValues(t, "database error", err.Causes()[0])
 }
 
 func TestNewBadRequestError(t *testing.T) {
