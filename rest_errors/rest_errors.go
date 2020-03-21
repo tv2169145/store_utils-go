@@ -37,6 +37,10 @@ func (e *restErr) Causes() []interface{} {
 	return e.ErrCauses
 }
 
+func GetRestErrorInstance() *restErr {
+	return &restErr{}
+}
+
 func NewRestError(message string, status int, err string, causes []interface{}) RestErr {
 	return &restErr{
 		ErrMessage: message,
